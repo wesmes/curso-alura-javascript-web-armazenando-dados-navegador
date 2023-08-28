@@ -30,6 +30,9 @@ form.addEventListener("submit", (evento) => {
         itens.push(itemAtual);
     }
     
+
+    localStorage.setItem('itens', JSON.stringify(itens));
+
     nome.value = '';
     quantidade.value = '';
 
@@ -43,17 +46,15 @@ function criaElemento(item) {
     const numeroItem = document.createElement('strong');
     numeroItem.innerHTML = item.quantidade;
     numeroItem.dataset.id = item.id;
-
     novoItem.appendChild(numeroItem);
+
     novoItem.innerHTML += item.nome;
 
     lista.appendChild(novoItem);
-
-    localStorage.setItem('itens', JSON.stringify(itens));
 
 }
 
 function atualizaElemento(item)
 {
-    console.log(document.querySelector("[data-id='"+item.id+'"]'));
+    document.querySelector("[data-id='"+item.id+"']").innerHTML = item.quantidade;
 }
